@@ -11,7 +11,7 @@
         $books = [
             [
                 "name" => "Do Androids Dream of Electric Sheep",
-                "author" => "Philip K.Dick",
+                "author" => "Philip K. Dick",
                 'releaseYear' => 1968,
                 "purchaseUrl" => 'http://example.com'
             ],
@@ -29,27 +29,27 @@
             ],
         ];
 
-        $author = 'Andy Weir';
-
-        function filterByAuthor($books, $author) {
-            $filteredBooks = [];
-            foreach ($books as $book) {
-                if ($book['author'] === $author) {
-                    $filteredBooks[] = $book;
+        function filter($items, $fn) {
+            $filteredItems = [];
+            foreach ($items as $item) {
+                if ($fn($item)) {
+                    $filteredItems[] = $item;
                 };
             }
-            return $filteredBooks;
-        }
+            return $filteredItems;
+        };
+
+        $filteredItems = filter($books, function ($book) {
+            return $book['releaseYear'] >= 1968;
+        });
     ?>
     <ul>
-        <?php foreach (filterByAuthor($books, $author) as $book) :?>
-        <?php if ($book['author'] === 'Andy Weir') :?>
+        <?php foreach ($filteredItems as $book) :?>
             <li>
                 <a href="<?= $book['purchaseUrl'] ?>">
                     <?= $book['name'] ?> (<?= $book['releaseYear'] ?>) - By <?= $book['author'] ?>
                 </a>
             </li>
-        <?php endif; ?>
         <?php endforeach; ?>
     </ul>
 </body>
