@@ -39,7 +39,7 @@
             return $filteredItems;
         };
 
-        $filteredItems = filter($books, function ($book) {
+        $filteredItems = array_filter($books, function ($book) {
             return $book['releaseYear'] >= 1968;
         });
     ?>
