@@ -1,15 +1,14 @@
 <?php
 require 'functions.php';
-//require 'router.php';
+require 'Database.php';
 
-// connect to our MySQL database using the PDO extension
-$dsn = "mysql:host=localhost;port=3306;dbname=demo;charset=utf8mb4";
-$pdo = new PDO($dsn, 'root');
+// Connect to the database, and execute a query.
 
-$statement = $pdo->prepare("select * from posts");
-$statement->execute();
-$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+$db = new Database();
+$posts = $db->query("select * from posts")->fetchAll(PDO::FETCH_ASSOC);
+
 foreach ($posts as $post)
 {
     echo "<li>{$post['title']}</li>";
 }
+
