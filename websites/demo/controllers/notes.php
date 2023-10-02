@@ -6,6 +6,6 @@ $heading = 'Notes';
 
 $notes = $db->query('select * from notes where user_id = :id', [
     'id' => 1
-])->fetchAll();
+])->get();
 
 require "views/notes.view.php";
