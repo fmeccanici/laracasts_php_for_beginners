@@ -1,6 +1,7 @@
 <?php
 
 use Core\Authenticator;
+use Core\Session;
 use Http\Forms\LoginForm;
 
 $email = $_POST['email'];
@@ -15,6 +16,9 @@ if ($form->validate($email, $password)) {
     $form->error('email', 'No user found with this email address and password.');
 }
 
-\Core\Session::flash('errors', $form->errors());
+Session::flash('errors', $form->errors());
+Session::flash('old', [
+    'email' => $email
+]);
 
 return redirect('/login');
