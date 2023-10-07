@@ -1,0 +1,16 @@
+{
+    "name": "fmeccanici/php_for_beginners",
+    "authors": [
+        {
+            "name": "fmeccanici",
+            "email": "florismeccanici@mecctech-solutions.nl"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\" : "Core/",
+            "Http\\" : "Http/"
+        }
+    }
+}
