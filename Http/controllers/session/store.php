@@ -15,6 +15,6 @@ if ($form->validate($email, $password)) {
     $form->error('email', 'No user found with this email address and password.');
 }
 
-return view('session/create.view.php', [
-    'errors' => $form->errors()
-]);
+\Core\Session::flash('errors', $form->errors());
+
+return redirect('/login');
