@@ -6,11 +6,21 @@
             "email": "florismeccanici@mecctech-solutions.nl"
         }
     ],
-    "require": {},
+    "require": {
+        "illuminate/collections": "^10.26"
+    },
     "autoload": {
         "psr-4": {
             "Core\\" : "Core/",
             "Http\\" : "Http/"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.21"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
         }
     }
 }
